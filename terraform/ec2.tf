@@ -1,5 +1,5 @@
 resource "aws_instance" "go_web_app" {
-  ami           = "ami-0d5eff06f840b45e9"
+  ami           = "ami-09e67e426f25ce0d7"
   key_name = "my-server"
   instance_type = "t2.micro"
   security_groups= [ "gowebapp_security_group"]
