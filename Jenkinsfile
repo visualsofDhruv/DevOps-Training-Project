@@ -8,9 +8,7 @@ node {
     
     stage("Build Docker Image") {
         
-        sh 'docker build -t gowebapp:latest .'
-        sh 'docker tag gowebapp visualsofdhruv/gowebapp:latest'
-        sh 'docker tag gowebapp visualsofdhruv/gowebapp:$BUILD_NUMBER'
+        sh 'docker build -t visualsofdhruv/gowebapp:1.0.0 .'
         
     }
     
@@ -18,10 +16,22 @@ node {
 
         withDockerRegistry([ credentialsId: "dockerhub", url: "" ]) {
             
-            sh 'docker push visualsofdhruv/gowebapp:latest'
-            sh 'docker push visualsofdhruv/gowebapp:$BUILD_NUMBER'
+            sh 'docker push visualsofdhruv/gowebapp:1.0.0'
+            
         }
 
     }
-
+    
+    stage("Deploying and Running container on Server") {
+        
+        def dockerRun = 'sudo docker run -p 9009:9009 -d --name go_web_app visualsofdhruv/gowebapp:1.0.0'
+        
+        sshagent(['server-creds']) {
+            
+            sh "ssh -o StrictHostKeyChecking=no ubuntu@3.86.174.140 ${dockerRun}"
+        
+        }
+        
+    }
+    
 }
