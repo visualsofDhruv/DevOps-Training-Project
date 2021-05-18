@@ -28,7 +28,7 @@ func main() {
 	})
 
 	// Serving html files
-	router.Use(static.Serve("/", static.LocalFile("./views", true)))
+	router.Use(static.Serve("/", static.LocalFile("./views/index.html", true)))
 
 	// Running project on 9009
 	router.Run(":9009")
