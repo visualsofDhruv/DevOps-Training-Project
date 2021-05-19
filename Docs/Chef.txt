@@ -1,0 +1,28 @@
+h2. Configuration Management: Chef
+----
+
+- Chef is a configuration management technology used to automate the infrastructure provisioning. It is developed on the basis of Ruby DSL language.
+- It has the capability to get integrated with any of the cloud technology.
+- Chef use to deploy and manage servers and applications in-house and on the cloud.
+
+h3. *Chef Architecture*
+
+- Chef is the combinaton of Chef Server, Nodes and Work Station
+
+*Work Station:* Wright all the configuration files
+*Chef Server:* Manages the nodes of infrastructure, Stores the configuration files
+*Chef Client:* It is program runs on each nodes
+*Knife:* It is command line tool runs on workstation
+*CookBook:* It's files containes configuration for infrastructure
+
+h3. *Chef Workflow*
+
+- Chef client periodically pulls chef server to see there are any changes in cookbooks or settings.
+- If changes are there, chef server sends latest configuration to chef client, then chef client apply that configuration to nodes.
+- Update cookbooks and settings are  pushed to hef server from workstation by using knife.
+
+h3. *Knife command*
+
+- Knife is Chef’s command-line tool to interact with the Chef server. One uses it for uploading cookbooks and managing other aspects of Chef. 
+- It help's managing Chef nodes, Cookbook, Recipe, Environments, Cloud Resources, Cloud Provisioning, Installation on Chef client on Chef nodes.
+
